@@ -5,7 +5,7 @@ import Unitls.Constants;
 import org.openqa.selenium.By;
 
 public class Registration extends BasePage {
-    By EntryRegistration_Button = By.className("notSigned");
+//    By EntryRegistration_Button = By.className("notSigned");
     public void registerToBuyMe(String firstName, String email, String pass){
         clickOnEntryRegistration();
         clickOnRegistration();
@@ -18,7 +18,7 @@ public class Registration extends BasePage {
 
     private void clickOnEntryRegistration(){
 //        clickElement(By.className("notSigned"));
-        clickElement(EntryRegistration_Button);
+        clickElement(Constants.EntryRegistration_Button);
     }
 
     private void clickOnRegistration(){
