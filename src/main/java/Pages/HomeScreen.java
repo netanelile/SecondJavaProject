@@ -3,34 +3,63 @@ package Pages;
 import Pages.HomeScreenOptions.Category;
 import Pages.HomeScreenOptions.PriceOptions;
 import Pages.HomeScreenOptions.Region;
-import Unitls.BasePage;
+import Uitls.BasePage;
 import org.openqa.selenium.By;
 
+/**
+ * This class contains teps functions for BuyMe Home screen - The first screen when entering the website.
+ */
 public class HomeScreen extends BasePage {
 
+    /**
+     * Open the Price Drop Menu,
+     * Click on a specific option from the Price Drop Menu
+     * @param option Price possible option taken from the Price Enum
+     */
     public void clickOnPriceOptions(PriceOptions option) {
+        test.info("Click on Price Options: " + choosePriceOptions(option));
         clickElementFromList(By.className("selected-name"), 0);
         clickElement(By.xpath("//*[contains(text(),'" + choosePriceOptions(option) + "')]"));
     }
 
+    /**
+     * Open the Region Drop Menu,
+     * Click on a specific option from the Region Drop Menu
+     * @param option Region possible option taken from the Region Enum
+     */
     public void clickOnRegionOptions(Region option) {
+        test.info("Click on Price Options: " + chooseRegionOptions(option));
         clickElementFromList(By.className("selected-name"), 1);
         clickElement(By.xpath("//*[contains(text(),'" + chooseRegionOptions(option) + "')]"));
     }
 
+    /**
+     * Open the Categories Drop Menu,
+     * Click on a specific option from the Categories Drop Menu
+     * @param option Category possible option taken from the Category Enum
+     */
     public void clickOnCategoryOptions(Category option) {
+        test.info("Click on Price Options: " + chooseCategoryOptions(option));
         clickElementFromList(By.className("selected-name"), 2);
         clickElement(By.xpath("//*[contains(text(),'" + chooseCategoryOptions(option) + "')]"));
     }
 
-    public void typeGiftToSearch(String giftToSearch) {
-        sendKeysToElement(By.xpath("//*[contains(@placeholder,'איזו מתנה תרצו לחפש?')]"), giftToSearch);
-    }
-
+    /**
+     * After complete choosing of the possible option that helps the user to find a gif, he can Click on the 'Find be a
+     * gift' button that will forward him to the search results page.
+     * This function perform a Click on Find me a Gift Button
+     */
     public void clickFindMeGiftButton() {
+        test.info("Click on Find Me a Gift Button");
         clickElement(By.xpath("//a[contains(@href, 'https://buyme.co.il/search')]"));
     }
 
+    /**
+     * Price Range picker. When choosing an Enum Price that represent the content of the drop menu,
+     * The system will return the actual element value of the chosen option.
+     * @param option Price rage to choose from the Enum (tha represent the content of the 'Price' drop menu)
+     * @return The String of the Actual Event so the system will know on which element to click.
+     */
     private String choosePriceOptions(PriceOptions option){
         return switch (option) {
             case till99 -> "עד 99 ש\"ח";
@@ -42,6 +71,12 @@ public class HomeScreen extends BasePage {
         };
     }
 
+    /**
+     * Region picker. When choosing an Enum Region that represent the content of the drop menu,
+     * The system will return the actual element value of the chosen option.
+     * @param option Region to choose from the Enum (tha represent the content of the 'Region' drop menu)
+     * @return The String of the Actual Event so the system will know on which element to click.
+     */
     private String chooseRegionOptions(Region option){
         return switch (option) {
             case TEL_AVIV -> "ת\"א והסביבה";
@@ -56,6 +91,12 @@ public class HomeScreen extends BasePage {
         };
     }
 
+    /**
+     * Categories picker. When choosing an Enum Category that represent the content of the drop menu,
+     * The system will return the actual element value of the chosen option.
+     * @param option Category to choose from the Enum (tha represent the content of the 'Categories' drop menu)
+     * @return The String of the Actual Event so the system will know on which element to click.
+     */
     private String chooseCategoryOptions(Category option){
         return switch (option) {
             case BEST2022 -> "המתנות האהובות של 2022";
