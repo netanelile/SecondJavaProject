@@ -44,7 +44,7 @@ public class GiftPurchase extends BasePage {
      * Click on Continue button
      * Thread sleep has to be used here. the base page wait doesn't go pass the loader.
      * So it's a must to wait for this element manually
-     * 
+     *
      */
     private void ClickContinue() {
         try {
